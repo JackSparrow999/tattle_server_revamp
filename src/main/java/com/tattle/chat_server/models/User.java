@@ -1,5 +1,6 @@
 package com.tattle.chat_server.models;
 
+import com.tattle.chat_server.dtos.user.UserRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,5 +28,10 @@ public class User {
     //user refers to variable name in Membership->user not the table name
     @OneToMany(mappedBy = "user")
     Set<Membership> memberships;
+
+    public User(UserRequest req){
+        this.userName = req.getUserName();
+        this.password = req.getPassword();
+    }
 
 }
