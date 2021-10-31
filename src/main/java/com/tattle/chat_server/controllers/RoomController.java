@@ -6,7 +6,8 @@ import com.tattle.chat_server.services.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/auth/room")
+@RestController
+@RequestMapping("/auth/room")
 public class RoomController {
 
     @Autowired

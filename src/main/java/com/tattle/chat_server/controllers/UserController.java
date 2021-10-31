@@ -6,7 +6,8 @@ import com.tattle.chat_server.dtos.user.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController(value = "/auth/user")
+@RestController
+@RequestMapping("/auth/user")
 public class UserController {
 
     @Autowired
