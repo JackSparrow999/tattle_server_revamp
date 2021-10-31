@@ -1,6 +1,5 @@
 package com.tattle.chat_server.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -24,4 +23,8 @@ public class Membership {
     @JoinColumn(name = "room_id", referencedColumnName = "id")
     Room room;
 
+    public Membership(User user, Room room){
+        this.user = user;
+        this.room = room;
+    }
 }
