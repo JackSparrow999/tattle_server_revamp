@@ -1,12 +1,12 @@
 package com.tattle.chat_server.controllers;
 
-import com.tattle.chat_server.UserService;
+import com.tattle.chat_server.services.UserService;
 import com.tattle.chat_server.dtos.user.UserRequest;
 import com.tattle.chat_server.dtos.user.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController(value = "/auth/user/")
+@RestController(value = "/auth/user")
 public class UserController {
 
     @Autowired

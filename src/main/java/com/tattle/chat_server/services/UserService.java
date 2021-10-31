@@ -1,4 +1,4 @@
-package com.tattle.chat_server;
+package com.tattle.chat_server.services;
 
 import com.tattle.chat_server.dtos.user.UserRequest;
 import com.tattle.chat_server.dtos.user.UserResponse;
