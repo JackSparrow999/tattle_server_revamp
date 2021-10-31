@@ -1,5 +1,6 @@
 package com.tattle.chat_server.models;
 
+import com.tattle.chat_server.dtos.room.RoomRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,5 +24,9 @@ public class Room {
 
     @OneToMany(mappedBy = "room")
     Set<Membership> memberships;
+
+    public Room(RoomRequest req){
+        this.name = req.getRoomName();
+    }
 
 }
