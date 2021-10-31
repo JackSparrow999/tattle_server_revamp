@@ -24,23 +24,23 @@ public class UserService {
         return new UserResponse(user);
     }
 
-    public UserResponse getUsers(UserRequest req){
+    public UserResponse getUsers(Integer userId, String userName){
         UserResponse res = new UserResponse();
         res.setSuccess(false);
 
-        if(req.getUserName()==null && req.getId()==null){
+        if(userName==null && userId==null){
             List<UserSummary> lst = userRepository.getAllUsers().stream().map(x -> new UserSummary(x))
                     .collect(Collectors.toList());
             res.setUsers(lst);
             res.setSuccess(true);
         }
-        else if(req.getId() != null){
-            List<UserSummary> lst = Arrays.asList(new UserSummary(userRepository.getById(req.getId())));
+        else if(userId != null){
+            List<UserSummary> lst = Arrays.asList(new UserSummary(userRepository.getById(userId)));
             res.setUsers(lst);
             res.setSuccess(true);
         }
-        else if(req.getUserName() != null){
-            List<UserSummary> lst = userRepository.getUsersByName(req.getUserName()).stream().map(x -> new UserSummary(x))
+        else if(userName != null){
+            List<UserSummary> lst = userRepository.getUsersByName(userName).stream().map(x -> new UserSummary(x))
                     .collect(Collectors.toList());
             res.setUsers(lst);
             res.setSuccess(true);

@@ -18,8 +18,9 @@ public class UserController {
     }
 
     @GetMapping
-    public UserResponse getUsers(@RequestBody UserRequest req){
-        return userService.getUsers(req);
+    public UserResponse getUsers(@RequestParam("user_id") Integer userId,
+                                 @RequestParam("user_name") String userName){
+        return userService.getUsers(userId, userName);
     }
 
     @DeleteMapping
