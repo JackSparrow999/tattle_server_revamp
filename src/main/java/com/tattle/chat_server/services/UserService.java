@@ -1,5 +1,6 @@
 package com.tattle.chat_server.services;
 
+import com.tattle.chat_server.dtos.LoginResponse;
 import com.tattle.chat_server.dtos.user.UserRequest;
 import com.tattle.chat_server.dtos.user.UserResponse;
 import com.tattle.chat_server.dtos.user.UserSummary;
@@ -76,6 +77,14 @@ public class UserService {
             userRepository.updatePassword(req.getId(), req.getPassword());
 
         return new UserResponse(true, "User data updated");
+    }
+
+    public LoginResponse isLoggedIn(UserRequest req){
+        User user = userRepository.getById(req.getId());
+        if(user.getPassword()!=null && user.getPassword().equals(req.getPassword()))
+            return new LoginResponse(true, true);
+        else
+            return new LoginResponse(true, false);
     }
 
 }
