@@ -65,14 +65,16 @@ public class MembershipService {
 
         if(userId != null){
             List<RoomMemberSummary> rooms = membershipRepository.findRoomsByUser(userId)
-                    .stream().map(r -> new RoomMemberSummary(r))
+                    .stream().map(r -> {
+                        return new RoomMemberSummary((Integer)r[0], (String)r[1]);
+                    })
                     .collect(Collectors.toList());
 
             return new MembershipResponse(true, null, rooms);
         }
         else if(roomId != null){
             List<UserMemberSummary> users = membershipRepository.findUserByRoom(roomId)
-                    .stream().map(u -> new UserMemberSummary(u))
+                    .stream().map(u -> new UserMemberSummary((Integer)u[0], (String)u[1]))
                     .collect(Collectors.toList());
 
             return new MembershipResponse(true, users, null);

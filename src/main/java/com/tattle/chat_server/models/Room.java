@@ -22,7 +22,7 @@ public class Room {
 
     String name;
 
-    @OneToMany(mappedBy = "room")
+    @OneToMany(mappedBy = "room", fetch = FetchType.LAZY)
     Set<Membership> memberships;
 
     public Room(RoomRequest req){

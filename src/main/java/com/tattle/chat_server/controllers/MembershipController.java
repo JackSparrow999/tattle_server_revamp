@@ -19,8 +19,8 @@ public class MembershipController {
     }
 
     @GetMapping
-    public MembershipResponse getMembers(@RequestParam("user_id") Integer userId,
-                                         @RequestParam("room_id") Integer roomId){
+    public MembershipResponse getMembers(@RequestParam(value = "user_id", required = false) Integer userId,
+                                         @RequestParam(value = "room_id", required = false) Integer roomId){
         return membershipService.getRelations(userId, roomId);
     }
 
