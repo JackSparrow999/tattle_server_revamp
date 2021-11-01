@@ -16,13 +16,13 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query(value = "select * from users where user_name = :userName", nativeQuery = true)
     List<User> getUsersByName(String userName);
 
-    @Query(value = "delete from users where id = :id", nativeQuery = true)
+    @Query(value = "delete from users where id = :id returning *", nativeQuery = true)
     User deleteUserById(Integer id);
 
-    @Query(value = "update users set user_name = :userName where id = :id", nativeQuery = true)
-    User updateUserName(Integer id, String userName);
+    @Query(value = "update users set user_name = :userName where id = :id returning *", nativeQuery = true)
+    List<User> updateUserName(Integer id, String userName);
 
-    @Query(value = "update users set password = :password where id = :id", nativeQuery = true)
-    User updatePassword(Integer id, String password);
+    @Query(value = "update users set password = :password where id = :id returning *", nativeQuery = true)
+    List<User> updatePassword(Integer id, String password);
 
 }

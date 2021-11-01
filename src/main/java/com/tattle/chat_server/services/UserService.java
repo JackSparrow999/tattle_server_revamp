@@ -51,11 +51,11 @@ public class UserService {
     }
 
     public UserResponse deleteUserById(UserRequest req){
-        if(req.getId() == null)
+        if(req.getUserId() == null)
             return new UserResponse(false, "No user_id in request");
 
         try{
-            userRepository.deleteUserById(req.getId());
+            userRepository.deleteUserById(req.getUserId());
         }
         catch (Exception ex){
             return new UserResponse(false, "Something went wrong!");
@@ -65,22 +65,22 @@ public class UserService {
     }
 
     public UserResponse updateUser(UserRequest req){
-        if(req.getId() == null)
+        if(req.getUserId() == null)
             return new UserResponse(false, "No user id found");
 
-        User user = userRepository.getById(req.getId());
+        User user = userRepository.getById(req.getUserId());
 
-        if(user.getUserName()!=null && user.getUserName().equals(req.getUserName()))
-            userRepository.updateUserName(req.getId(), req.getUserName());
+        if(user.getUserName()!=null && !user.getUserName().equals(req.getUserName()))
+            userRepository.updateUserName(req.getUserId(), req.getUserName());
 
-        if(user.getPassword()!=null && user.getPassword().equals(req.getPassword()))
-            userRepository.updatePassword(req.getId(), req.getPassword());
+        if(user.getPassword()!=null && !user.getPassword().equals(req.getPassword()))
+            userRepository.updatePassword(req.getUserId(), req.getPassword());
 
         return new UserResponse(true, "User data updated");
     }
 
     public LoginResponse isLoggedIn(UserRequest req){
-        User user = userRepository.getById(req.getId());
+        User user = userRepository.getById(req.getUserId());
         if(user.getPassword()!=null && user.getPassword().equals(req.getPassword()))
             return new LoginResponse(true, true);
         else

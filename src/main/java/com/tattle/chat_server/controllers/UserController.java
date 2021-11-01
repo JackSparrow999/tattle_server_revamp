@@ -19,8 +19,8 @@ public class UserController {
     }
 
     @GetMapping
-    public UserResponse getUsers(@RequestParam("user_id") Integer userId,
-                                 @RequestParam("user_name") String userName){
+    public UserResponse getUsers(@RequestParam(value = "user_id", required = false) Integer userId,
+                                 @RequestParam(value = "user_name", required = false) String userName){
         return userService.getUsers(userId, userName);
     }
 
