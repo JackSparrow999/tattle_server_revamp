@@ -19,8 +19,8 @@ public class RoomController {
     }
 
     @GetMapping
-    public RoomResponse getRooms(@RequestParam("room_id") Integer roomId,
-                                 @RequestParam("room_name") String roomName){
+    public RoomResponse getRooms(@RequestParam(value = "room_id", required = false) Integer roomId,
+                                 @RequestParam(value = "room_name", required = false) String roomName){
         return roomService.getRoom(roomId, roomName);
     }
 

@@ -19,7 +19,7 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
     @Query(value = "delete from room where id = :roomId returning *", nativeQuery = true)
     Room deleteRoom(Integer roomId);
 
-    @Query(value = "update room set name = :roomName where id = :roomId", nativeQuery = true)
-    Room updateRoomName(Integer roomId, String roomName);
+    @Query(value = "update room set name = :roomName where id = :roomId returning *", nativeQuery = true)
+    List<Room> updateRoomName(Integer roomId, String roomName);
 
 }
