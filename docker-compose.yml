@@ -1,0 +1,22 @@
+version: "3"
+services:
+  tattle-cache:
+    image: redis:6.2.3-alpine
+    ports:
+      - 6400:6379
+  tattle-db:
+    image: postgres:13.2-alpine
+    ports:
+      - 5400:5432
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: tattle
+  tattle-server:
+    build: .
+    ports:
+      - 8060:8060
+    depends_on:
+      - tattle-db
+    links:
+      - tattle-db:tattle-db
