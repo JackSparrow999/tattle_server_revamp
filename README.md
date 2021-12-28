@@ -17,6 +17,6 @@ Setup Steps:
 
 docker-compose up
 
-Tattle Client repo: https://github.com/JackSparrow999/tattle_client
+Tattle Client repo: https://github.com/JackSparrow999/tattle_client (Checkout the readme as well!)
 
 Happy tattling!
